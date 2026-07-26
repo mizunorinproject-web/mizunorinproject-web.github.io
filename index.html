@@ -1,279 +1,248 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="水野凛プロジェクト。画像生成、画像加工、動画編集、チラシ制作、SNS投稿・運用・分析まで対応します。">
-  <title>水野凛プロジェクト</title>
-  <style>
-    :root{
-      --navy:#0b1f3a;
-      --navy2:#15355d;
-      --cream:#f6f1e8;
-      --white:#ffffff;
-      --ink:#172033;
-      --muted:#607089;
-      --line:#dfe5ec;
-      --accent:#c98c55;
-      --shadow:0 14px 34px rgba(11,31,58,.12);
-      --radius:22px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
-      color:var(--ink);
-      background:#fff;
-      line-height:1.75;
-    }
-    img{display:block;width:100%;height:auto}
-    a{text-decoration:none;color:inherit}
-    .wrap{width:min(100% - 32px, 720px);margin:auto}
-    .nav{
-      position:sticky;top:0;z-index:50;
-      background:rgba(255,255,255,.94);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(223,229,236,.9);
-    }
-    .navin{
-      min-height:64px;
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
-    }
-    .brand{font-weight:800;letter-spacing:.04em;color:var(--navy);font-size:15px}
-    .navbtn{
-      background:var(--navy);color:white;
-      padding:10px 16px;border-radius:999px;font-size:13px;font-weight:700;
-    }
-    .hero{
-      background:
-        linear-gradient(180deg,rgba(11,31,58,.08),rgba(11,31,58,.84)),
-        url("assets/hero.jpeg") center 22% / cover no-repeat;
-      min-height:84svh;
-      display:flex;align-items:flex-end;
-      color:white;
-    }
-    .heroContent{padding:88px 0 46px}
-    .eyebrow{font-size:13px;letter-spacing:.15em;font-weight:800;opacity:.9}
-    h1{font-size:clamp(38px,11vw,66px);line-height:1.08;margin:10px 0 20px;letter-spacing:.02em}
-    .lead{font-size:17px;line-height:1.8;max-width:38rem;margin:0}
-    .heroBtns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
-    .btn{
-      min-height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
-      font-weight:800;padding:12px 16px;text-align:center;
-    }
-    .btnPrimary{background:white;color:var(--navy)}
-    .btnGhost{border:1px solid rgba(255,255,255,.58);background:rgba(255,255,255,.08)}
-    section{padding:72px 0}
-    .soft{background:var(--cream)}
-    .dark{background:var(--navy);color:white}
-    .sectionNo{font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--accent)}
-    h2{font-size:32px;line-height:1.3;margin:8px 0 18px;color:var(--navy)}
-    .dark h2{color:white}
-    .intro{font-size:16px;color:var(--muted);margin-bottom:28px}
-    .dark .intro{color:#d6dfeb}
-    .imageCard{
-      overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow);background:white;
-      margin:24px 0;
-    }
-    .grid{display:grid;gap:16px}
-    .card{
-      background:white;border:1px solid var(--line);border-radius:18px;padding:22px;
-      box-shadow:0 8px 22px rgba(11,31,58,.06);
-    }
-    .card h3{margin:0 0 8px;font-size:20px;color:var(--navy)}
-    .card p{margin:0;color:var(--muted)}
-    .serviceGrid{grid-template-columns:1fr}
-    .serviceNum{
-      width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
-      background:var(--navy);color:white;font-weight:800;margin-bottom:14px;
-    }
-    .flow{display:grid;gap:10px;margin-top:28px}
-    .flowItem{
-      display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;
-      background:white;border-radius:16px;padding:16px;border:1px solid var(--line)
-    }
-    .flowItem b{
-      width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
-      background:var(--navy);color:white
-    }
-    .reasons{display:grid;gap:12px}
-    .reason{
-      border-left:4px solid var(--accent);
-      background:rgba(255,255,255,.08);
-      border-radius:0 14px 14px 0;padding:15px 16px
-    }
-    .works{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .works img{aspect-ratio:3/4;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)}
-    .profileBox{
-      background:white;border-radius:var(--radius);padding:22px;color:var(--ink)
-    }
-    .profileBox strong{display:block;color:var(--navy);font-size:22px;margin-bottom:6px}
-    .contact{
-      background:linear-gradient(140deg,var(--navy),var(--navy2));
-      color:white;border-radius:26px;padding:30px 22px;box-shadow:var(--shadow)
-    }
-    .contact h2{color:white;margin-top:0}
-    .contact .btn{background:white;color:var(--navy);margin-top:20px}
-    footer{background:#071427;color:#d4dce7;padding:34px 0 100px;font-size:13px}
-    .fixedCta{
-      position:fixed;left:12px;right:12px;bottom:12px;z-index:60;
-      background:var(--navy);color:white;border-radius:16px;min-height:58px;
-      display:flex;align-items:center;justify-content:center;font-weight:800;
-      box-shadow:0 14px 34px rgba(0,0,0,.22)
-    }
-    .small{font-size:13px;color:var(--muted)}
-    @media (min-width:720px){
-      .serviceGrid{grid-template-columns:1fr 1fr}
-      .heroBtns{max-width:420px}
-      .works{grid-template-columns:repeat(4,1fr)}
-      .fixedCta{left:auto;right:24px;bottom:24px;width:260px}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="水野凛プロジェクト。画像生成、画像加工、動画編集、チラシ制作、SNS投稿・運用・分析まで一貫対応。">
+<title>水野凛プロジェクト</title>
+<style>
+:root{
+  --navy:#0d2341;
+  --navy2:#153a68;
+  --gold:#b99552;
+  --cream:#f7f3ec;
+  --white:#ffffff;
+  --ink:#172033;
+  --muted:#66758b;
+  --line:#e2e7ee;
+  --rose:#b85f70;
+  --shadow:0 16px 40px rgba(13,35,65,.14);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.75;
+}
+img{display:block;width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(100% - 30px,760px);margin:auto}
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(226,231,238,.9);
+}
+.navin{
+  min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px
+}
+.brand{font-weight:800;letter-spacing:.04em;color:var(--navy);font-size:15px}
+.navcta{
+  background:var(--navy);color:#fff;padding:10px 15px;border-radius:999px;
+  font-size:13px;font-weight:800
+}
+.hero{
+  min-height:86svh;
+  display:flex;align-items:flex-end;color:#fff;
+  background:
+    linear-gradient(180deg,rgba(7,18,34,.08) 8%,rgba(7,18,34,.78) 72%,rgba(7,18,34,.96) 100%),
+    url("hero.jpeg") center 18%/cover no-repeat;
+}
+.heroBody{padding:92px 0 46px}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.18em;color:#f0d7a2}
+h1{font-size:clamp(40px,11vw,70px);line-height:1.05;margin:10px 0 18px;letter-spacing:.02em}
+.lead{font-size:16px;line-height:1.85;max-width:38rem;margin:0}
+.heroBtns{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:28px}
+.btn{
+  min-height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+  font-weight:800;text-align:center;padding:12px 14px
+}
+.btnMain{background:#fff;color:var(--navy)}
+.btnSub{border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.08)}
+section{padding:72px 0}
+.soft{background:var(--cream)}
+.dark{background:var(--navy);color:#fff}
+.sec{font-size:12px;letter-spacing:.18em;font-weight:800;color:var(--gold)}
+h2{font-size:31px;line-height:1.35;margin:8px 0 18px;color:var(--navy)}
+.dark h2{color:#fff}
+.intro{color:var(--muted);font-size:16px;margin:0 0 28px}
+.dark .intro{color:#d4deea}
+.visual{
+  border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow);margin:24px 0
+}
+.grid{display:grid;gap:15px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;
+  box-shadow:0 8px 22px rgba(13,35,65,.06)
+}
+.card h3{margin:0 0 8px;font-size:20px;color:var(--navy)}
+.card p{margin:0;color:var(--muted)}
+.num{
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  background:var(--navy);color:#fff;font-weight:800;margin-bottom:14px
+}
+.flow{display:grid;gap:10px;margin-top:24px}
+.flowRow{
+  display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px
+}
+.flowRow b{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  background:var(--navy);color:#fff
+}
+.small{font-size:13px;color:var(--muted)}
+.reasons{display:grid;gap:12px}
+.reason{
+  border-left:4px solid var(--gold);
+  background:rgba(255,255,255,.08);border-radius:0 14px 14px 0;padding:15px 16px
+}
+.works{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.works img{aspect-ratio:3/4;object-fit:cover;border-radius:16px;box-shadow:var(--shadow)}
+.profileBox{background:#fff;border-radius:var(--radius);padding:22px;color:var(--ink)}
+.profileBox strong{display:block;color:var(--navy);font-size:22px;margin-bottom:7px}
+.contact{
+  background:linear-gradient(140deg,var(--navy),var(--navy2));
+  color:#fff;border-radius:26px;padding:30px 22px;box-shadow:var(--shadow)
+}
+.contact h2{color:#fff;margin-top:0}
+.contact .btn{background:#fff;color:var(--navy);margin-top:20px}
+footer{background:#071427;color:#d4dce7;padding:34px 0 100px;font-size:13px}
+.fixed{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:60;
+  background:var(--navy);color:#fff;border-radius:16px;min-height:58px;
+  display:flex;align-items:center;justify-content:center;font-weight:800;
+  box-shadow:0 14px 34px rgba(0,0,0,.22)
+}
+@media(min-width:720px){
+  .serviceGrid{grid-template-columns:1fr 1fr}
+  .heroBtns{max-width:420px}
+  .works{grid-template-columns:repeat(4,1fr)}
+  .fixed{left:auto;right:24px;bottom:24px;width:270px}
+}
+</style>
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap navin">
-      <div class="brand">水野凛プロジェクト</div>
-      <a class="navbtn" href="#contact">お問い合わせ</a>
+<nav>
+  <div class="wrap navin">
+    <div class="brand">水野凛プロジェクト</div>
+    <a class="navcta" href="#contact">お問い合わせ</a>
+  </div>
+</nav>
+
+<main>
+<section class="hero">
+  <div class="wrap heroBody">
+    <div class="kicker">MIZUNO RIN PROJECT</div>
+    <h1>伝える力を、<br>価値に。</h1>
+    <p class="lead">病院勤務や飲料メーカー勤務で培った経験を活かし、画像生成・画像加工、動画編集、チラシ制作、SNS投稿・運用・分析まで一貫して対応します。</p>
+    <div class="heroBtns">
+      <a class="btn btnMain" href="#service">サービスを見る</a>
+      <a class="btn btnSub" href="#works">制作実績を見る</a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <section class="hero" id="top">
-      <div class="wrap heroContent">
-        <div class="eyebrow">MIZUNO RIN PROJECT</div>
-        <h1>伝える力を、<br>価値に。</h1>
-        <p class="lead">病院勤務や飲料メーカー勤務で培った経験を活かし、画像生成・加工、動画編集、チラシ制作、SNS投稿・運用・分析まで一貫して対応します。</p>
-        <div class="heroBtns">
-          <a class="btn btnPrimary" href="#service">サービスを見る</a>
-          <a class="btn btnGhost" href="#works">制作実績を見る</a>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="sectionNo">01 CONCEPT</div>
-        <h2>目的から考える<br>クリエイティブ制作</h2>
-        <p class="intro">見た目を整えるだけではなく、誰に、何を、どの媒体で伝えるかを整理し、企画から制作、運用、改善までつなげます。</p>
-        <div class="imageCard"><img src="assets/purpose.png" alt="目的から考える制作方針"></div>
-        <div class="flow">
-          <div class="flowItem"><b>1</b><div><strong>目的整理</strong><br><span class="small">課題、対象者、伝える内容を明確にします。</span></div></div>
-          <div class="flowItem"><b>2</b><div><strong>企画・構成</strong><br><span class="small">媒体に合わせて見せ方と導線を設計します。</span></div></div>
-          <div class="flowItem"><b>3</b><div><strong>制作・編集</strong><br><span class="small">画像、動画、印刷物を制作します。</span></div></div>
-          <div class="flowItem"><b>4</b><div><strong>運用・分析・改善</strong><br><span class="small">結果を確認し、次の施策につなげます。</span></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="soft" id="service">
-      <div class="wrap">
-        <div class="sectionNo">02 SERVICE</div>
-        <h2>対応サービス</h2>
-        <p class="intro">制作物だけを切り離さず、必要に応じて企画、投稿、分析、改善まで一連で対応します。</p>
-        <div class="grid serviceGrid">
-          <article class="card">
-            <div class="serviceNum">1</div>
-            <h3>画像生成・画像制作</h3>
-            <p>AI画像生成、SNS画像、広告画像、バナー、サムネイル、キャラクター制作に対応します。</p>
-          </article>
-          <article class="card">
-            <div class="serviceNum">2</div>
-            <h3>画像加工・編集</h3>
-            <p>切り抜き、背景透過、合成、レタッチ、文字入れ、サイズ調整、用途別の再編集を行います。</p>
-          </article>
-          <article class="card">
-            <div class="serviceNum">3</div>
-            <h3>動画制作・動画編集</h3>
-            <p>ショート動画、PR動画、字幕、テロップ、BGM、画像連結、サムネイルまで制作します。</p>
-          </article>
-          <article class="card">
-            <div class="serviceNum">4</div>
-            <h3>チラシ・印刷物</h3>
-            <p>チラシ、ポスター、パンフレット、営業資料、スライドなど、印刷と説明に使える資料を制作します。</p>
-          </article>
-          <article class="card">
-            <div class="serviceNum">5</div>
-            <h3>SNS投稿・運用・分析</h3>
-            <p>投稿制作、投稿管理、運用、インサイト分析、改善提案まで一連で支援します。</p>
-          </article>
-          <article class="card">
-            <div class="serviceNum">6</div>
-            <h3>企画・構成・台本</h3>
-            <p>目的とターゲットを整理し、画像、動画、SNS、印刷物に合わせた構成と台本を作成します。</p>
-          </article>
-        </div>
-        <div class="imageCard"><img src="assets/service.png" alt="サービス概要"></div>
-      </div>
-    </section>
-
-    <section class="dark">
-      <div class="wrap">
-        <div class="sectionNo">03 STRENGTH</div>
-        <h2>安心して進められる<br>制作パートナーとして</h2>
-        <p class="intro">病院や企業での勤務経験を活かし、制作技術だけでなく、仕事の進め方とコミュニケーションも大切にします。</p>
-        <div class="reasons">
-          <div class="reason">報告・連絡・相談を丁寧に行います</div>
-          <div class="reason">進捗状況と確認事項を分かりやすく共有します</div>
-          <div class="reason">納期を意識してスケジュールを管理します</div>
-          <div class="reason">ご要望と修正内容を整理して反映します</div>
-          <div class="reason">企画から納品後の改善まで一貫して対応します</div>
-        </div>
-        <div class="imageCard"><img src="assets/strength.jpeg" alt="水野凛プロジェクトの強み"></div>
-      </div>
-    </section>
-
-    <section id="works">
-      <div class="wrap">
-        <div class="sectionNo">04 WORKS</div>
-        <h2>制作例</h2>
-        <p class="intro">画像制作、SNSコンテンツ、動画用素材、営業資料など、目的に合わせた制作を行います。</p>
-        <div class="works">
-          <img src="assets/works.jpeg" alt="制作例1">
-          <img src="assets/portfolio.png" alt="制作例2">
-          <img src="assets/portfolio2.png" alt="制作例3">
-          <img src="assets/value.png" alt="制作例4">
-        </div>
-      </div>
-    </section>
-
-    <section class="soft">
-      <div class="wrap">
-        <div class="sectionNo">05 PROFILE</div>
-        <h2>水野凛プロジェクト</h2>
-        <div class="imageCard"><img src="assets/profile.jpeg" alt="プロフィール"></div>
-        <div class="profileBox">
-          <strong>代表者　吉川ひろ子</strong>
-          <p>病院勤務や飲料メーカー勤務で培った経験を活かし、専門的な内容や企業の魅力を、分かりやすい画像、動画、印刷物へ変換します。</p>
-          <p>画像生成と加工、動画編集、チラシ制作、SNS投稿・運用・分析まで、目的に合わせて一つの流れで対応します。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="wrap">
-        <div class="contact">
-          <div class="sectionNo">06 CONTACT</div>
-          <h2>発信や制作の課題を<br>お聞かせください</h2>
-          <p>画像を整えたい、動画を作りたい、チラシを制作したい、SNSを運用・分析したいなど、目的に合わせてご提案します。</p>
-          <a class="btn" href="mailto:fukumaru10960@gmail.com">メールで問い合わせる</a>
-          <p style="font-size:12px;margin-top:14px;opacity:.78">メールでご相談いただけます。</p>
-        </div>
-        <div class="imageCard"><img src="assets/consult.png" alt="相談イメージ"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <strong>水野凛プロジェクト</strong><br>
-      代表者　吉川ひろ子<br>
-      画像生成・画像加工・動画編集・チラシ制作・SNS投稿運用分析
-      <div style="margin-top:16px">Copyright © Mizuno Rin Project</div>
+<section>
+  <div class="wrap">
+    <div class="sec">01 CONCEPT</div>
+    <h2>見た目ではなく、<br>目的から考える。</h2>
+    <p class="intro">誰に、何を、どこで伝えるかを整理し、企画から制作、発信後の分析・改善まで一つの流れで設計します。</p>
+    <div class="visual"><img src="purpose.png" alt="目的から考える制作方針"></div>
+    <div class="flow">
+      <div class="flowRow"><b>1</b><div><strong>目的整理</strong><br><span class="small">課題、対象者、伝える内容を明確にします。</span></div></div>
+      <div class="flowRow"><b>2</b><div><strong>企画・構成</strong><br><span class="small">媒体に合わせて見せ方と導線を設計します。</span></div></div>
+      <div class="flowRow"><b>3</b><div><strong>制作・編集</strong><br><span class="small">画像、動画、チラシ、資料を制作します。</span></div></div>
+      <div class="flowRow"><b>4</b><div><strong>運用・分析・改善</strong><br><span class="small">結果を確認し、次の施策へつなげます。</span></div></div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <a class="fixedCta" href="#contact">制作について相談する</a>
+<section class="soft" id="service">
+  <div class="wrap">
+    <div class="sec">02 SERVICE</div>
+    <h2>対応サービス</h2>
+    <p class="intro">単発の制作から、企画・投稿・運用・分析まで、必要な範囲に合わせて対応します。</p>
+    <div class="grid serviceGrid">
+      <article class="card"><div class="num">1</div><h3>画像生成・画像制作</h3><p>AI画像生成、広告画像、SNS画像、バナー、サムネイル、キャラクター制作。</p></article>
+      <article class="card"><div class="num">2</div><h3>画像加工・編集</h3><p>切り抜き、背景透過、合成、レタッチ、文字入れ、サイズ調整、用途別再編集。</p></article>
+      <article class="card"><div class="num">3</div><h3>動画制作・動画編集</h3><p>ショート動画、PR動画、字幕、テロップ、BGM、サムネイル、画像連結。</p></article>
+      <article class="card"><div class="num">4</div><h3>チラシ・印刷物</h3><p>チラシ、ポスター、パンフレット、営業資料、スライド、説明資料。</p></article>
+      <article class="card"><div class="num">5</div><h3>SNS投稿・運用・分析</h3><p>投稿制作、投稿管理、運用、インサイト分析、改善提案まで一連で支援。</p></article>
+      <article class="card"><div class="num">6</div><h3>企画・構成・台本</h3><p>目的とターゲットを整理し、伝わる順番と行動導線を設計します。</p></article>
+    </div>
+    <div class="visual"><img src="service.png" alt="サービス概要"></div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <div class="sec">03 STRENGTH</div>
+    <h2>安心して進められる<br>制作パートナーとして</h2>
+    <p class="intro">病院や企業での勤務経験を活かし、制作技術だけでなく、報告・連絡・相談と仕事の進めやすさも大切にします。</p>
+    <div class="reasons">
+      <div class="reason">進捗状況と確認事項を分かりやすく共有します</div>
+      <div class="reason">報告・連絡・相談を丁寧に行います</div>
+      <div class="reason">納期を意識してスケジュールを管理します</div>
+      <div class="reason">ご要望と修正内容を整理して正確に反映します</div>
+      <div class="reason">企画から納品後の改善まで一貫して対応します</div>
+    </div>
+    <div class="visual"><img src="strength.jpeg" alt="水野凛プロジェクトの強み"></div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="sec">04 WORKS</div>
+    <h2>制作実績</h2>
+    <p class="intro">画像、動画、SNSコンテンツ、営業資料など、伝える目的に合わせて制作します。</p>
+    <div class="works">
+      <img src="works.jpeg" alt="制作実績1">
+      <img src="portfolio.png" alt="制作実績2">
+      <img src="portfolio2.png" alt="制作実績3">
+      <img src="value.png" alt="制作実績4">
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="sec">05 PROFILE</div>
+    <h2>水野凛プロジェクト</h2>
+    <div class="visual"><img src="profile.jpeg" alt="プロフィール"></div>
+    <div class="profileBox">
+      <strong>代表者　吉川ひろ子</strong>
+      <p>病院勤務や飲料メーカー勤務で培った経験を活かし、専門的な内容や企業の魅力を、分かりやすい画像、動画、印刷物へ変換します。</p>
+      <p>画像生成・加工、動画編集、チラシ制作、SNS投稿・運用・分析まで、目的に合わせて一つの流れで対応します。</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="sec">06 CONTACT</div>
+      <h2>発信や制作の課題を<br>お聞かせください</h2>
+      <p>画像を整えたい、動画を作りたい、チラシを制作したい、SNSを運用・分析したいなど、目的に合わせてご提案します。</p>
+      <a class="btn" href="mailto:fukumaru10960@gmail.com">メールで問い合わせる</a>
+    </div>
+    <div class="visual"><img src="consult.png" alt="相談イメージ"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>水野凛プロジェクト</strong><br>
+    代表者　吉川ひろ子<br>
+    画像生成・画像加工・動画編集・チラシ制作・SNS投稿運用分析
+    <div style="margin-top:16px">Copyright © Mizuno Rin Project</div>
+  </div>
+</footer>
+
+<a class="fixed" href="#contact">制作について相談する</a>
 </body>
 </html>
