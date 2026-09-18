@@ -3,25 +3,96 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>水野凛 制作実績ポートフォリオ</title>
-  <meta name="description" content="水野凛プロジェクトの制作実績とお問い合わせ">
+  <title>水野凛｜制作実績ポートフォリオ</title>
+  <meta name="description" content="水野凛のAIディレクション、デジタル広報、画像制作、動画編集、SNS運用・解析の制作実績です。">
   <style>
+    :root{--violet:#271064;--violet-deep:#17063f;--pink:#ff4f78;--lavender:#9d8cff;--ice:#edf0ff;--paper:#faf9ff;--ink:#171526;--muted:#625f72;--line:#ddd8ee;--white:#fff}
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;background:#071735}
-    body{margin:0;background:#071735;color:#fff;font-family:"Yu Gothic",Meiryo,sans-serif}
-    main{width:100%;overflow:hidden}
-    .page{display:block;width:100%;height:auto;margin:0;border:0}
-    .contact-link{position:fixed;right:20px;bottom:20px;z-index:10;padding:13px 20px;border-radius:999px;background:#fff;color:#092052;text-decoration:none;font-weight:700;box-shadow:0 8px 28px rgba(0,0,0,.25)}
-    @media (max-width:640px){.contact-link{right:12px;bottom:12px;padding:11px 16px;font-size:14px}}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:var(--paper);font-family:"Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    a{color:inherit}
+    img{display:block;max-width:100%}
+    .wrap{width:min(calc(100% - 40px),1120px);margin:auto}
+    .site-header{position:sticky;z-index:20;top:0;color:#fff;background:rgba(23,6,63,.92);border-bottom:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px)}
+    .header-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:12px;font-weight:900;letter-spacing:.18em;text-decoration:none}
+    nav{display:flex;align-items:center;gap:24px;font-size:13px;font-weight:750}
+    nav a{text-decoration:none}
+    nav a:hover{color:#ffd4df}
+    .hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(125deg,var(--violet-deep),var(--violet) 62%,#43128c)}
+    .hero::after{content:"WORKS";position:absolute;right:-.03em;bottom:-.22em;color:rgba(255,255,255,.035);font-size:clamp(120px,24vw,360px);font-weight:950;letter-spacing:-.09em;line-height:1;pointer-events:none}
+    .hero-grid{position:relative;z-index:1;min-height:690px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.65fr);align-items:end;gap:clamp(32px,6vw,82px)}
+    .hero-copy{align-self:center;padding:90px 0}
+    .eyebrow,.work-type{margin:0 0 18px;color:#ff9bb3;font-size:11px;font-weight:900;letter-spacing:.18em}
+    h1{margin:0;font-size:clamp(50px,7.4vw,102px);line-height:1.04;letter-spacing:-.065em}
+    h1 span{display:block;color:var(--pink)}
+    .hero-lead{max-width:680px;margin:30px 0 0;color:rgba(255,255,255,.78);font-size:17px;line-height:2}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+    .button{display:inline-flex;min-height:50px;align-items:center;justify-content:center;padding:12px 22px;border:1px solid transparent;border-radius:999px;font-size:13px;font-weight:850;text-decoration:none}
+    .button.primary{color:var(--violet-deep);background:#fff}
+    .button.secondary{color:#fff;border-color:rgba(255,255,255,.4)}
+    .hero-portrait{align-self:end;margin:0}
+    .hero-portrait img{width:100%;max-height:640px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 28px 32px rgba(0,0,0,.32))}
+    .intro{padding:100px 0 70px}
+    .intro-grid{display:grid;grid-template-columns:.55fr 1.45fr;gap:clamp(36px,7vw,94px);align-items:start}
+    .section-label{margin:0;color:var(--pink);font-size:11px;font-weight:900;letter-spacing:.2em}
+    .intro h2,.section-heading h2{margin:0;font-size:clamp(38px,5vw,68px);line-height:1.18;letter-spacing:-.055em}
+    .intro-copy{max-width:700px;color:var(--muted);font-size:16px}
+    .services{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;padding:0;list-style:none}
+    .services li{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12px;font-weight:750}
+    .works{padding:60px 0 110px}
+    .section-heading{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:42px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+    .section-heading p{max-width:470px;margin:0;color:var(--muted)}
+    .work{display:grid;grid-template-columns:minmax(230px,.55fr) minmax(0,1.45fr);gap:clamp(28px,6vw,78px);align-items:center;padding:clamp(26px,5vw,62px);border-radius:30px;background:#fff;box-shadow:0 16px 50px rgba(39,16,100,.08)}
+    .work+.work{margin-top:24px}
+    .work-copy h3{margin:0 0 16px;font-size:clamp(28px,3.7vw,48px);line-height:1.25;letter-spacing:-.04em}
+    .work-copy>p:not(.work-type){margin:0;color:var(--muted)}
+    .tag-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
+    .tag{padding:6px 10px;border-radius:999px;color:var(--violet);background:var(--ice);font-size:11px;font-weight:850}
+    .work-visual{overflow:hidden;border-radius:22px;background:#f0edf8}
+    .work-visual img{width:100%;height:100%;object-fit:cover}
+    .work-bags{grid-template-columns:minmax(260px,.82fr) minmax(0,1.18fr);color:#fff;background:linear-gradient(135deg,#25105d,#442095)}
+    .work-bags .work-copy>p:not(.work-type){color:rgba(255,255,255,.72)}
+    .bag-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .bag-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px}
+    .bag-grid img:not(:first-child){object-position:center top}
+    .story-visual{min-height:340px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;padding:28px;background:radial-gradient(circle at 50% 42%,#c9c2ff,#7157e8 58%,#34207d);color:#fff}
+    .story-visual span{display:grid;place-items:center;width:82px;height:82px;padding:8px;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(255,255,255,.12);font-size:13px;font-weight:850}
+    .story-visual b{opacity:.65}
+    .note-visual img{aspect-ratio:16/10;object-fit:cover}
+    .flyer-visual{background:#fff9d9}
+    .flyer-visual img{max-height:720px;object-fit:contain}
+    .contact{padding:90px 0;color:#fff;background:linear-gradient(120deg,var(--violet-deep),var(--violet))}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:end}
+    .contact h2{margin:0;font-size:clamp(38px,5.5vw,74px);line-height:1.18;letter-spacing:-.055em}
+    .contact-copy p{margin:0 0 24px;color:rgba(255,255,255,.72)}
+    .mail{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);font-size:clamp(16px,2vw,24px);font-weight:850;text-decoration:none}
+    footer{padding:26px 20px;color:#b9add9;background:#11052d;font-size:11px;text-align:center;letter-spacing:.08em}
+    a:focus-visible{outline:3px solid #ffc0d0;outline-offset:4px}
+    @media(max-width:800px){nav a:not(:last-child){display:none}.hero-grid{min-height:auto;grid-template-columns:1fr}.hero-copy{padding:70px 0 0}.hero-portrait{width:min(78%,430px);margin:auto}.hero-portrait img{max-height:520px}.intro-grid,.contact-grid{grid-template-columns:1fr}.work,.work-bags{grid-template-columns:1fr}.work-visual{order:-1}.section-heading{align-items:start;flex-direction:column}.work-bags .work-visual{order:0}}
+    @media(max-width:540px){.wrap{width:min(calc(100% - 24px),1120px)}.header-inner{min-height:58px}.brand{font-size:10px}.hero-copy{padding-top:54px}h1{font-size:48px}.hero-lead{font-size:14px}.hero-actions{display:grid}.button{width:100%}.intro{padding:70px 0 44px}.works{padding:40px 0 78px}.work{padding:20px;border-radius:22px}.work-copy{padding:6px}.story-visual{min-height:280px}.story-visual span{width:66px;height:66px;font-size:11px}.contact{padding:70px 0}.mail{font-size:13px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
 <body>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../">MIZUNO RIN PROJECT</a><nav><a href="#works">制作実績</a><a href="#contact">お問い合わせ</a><a href="../">トップへ戻る</a></nav></div></header>
   <main>
-    <img class="page" src="../page-1.png" alt="水野凛プロジェクト トップページ">
-    <img class="page" src="../page-2.png" alt="制作内容と実績紹介">
-    <img class="page" src="../page-3.png" alt="制作実績">
-    <img class="page" src="../page-4.png" alt="お問い合わせ">
+    <section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><p class="eyebrow">AI DIRECTION · DIGITAL PR · CREATIVE</p><h1>制作実績<span>Portfolio</span></h1><p class="hero-lead">企画、画像、動画、文章、SNS運用・解析まで。目的と見る人を整理し、情報を「届いて、動く」クリエイティブへ組み立てます。</p><div class="hero-actions"><a class="button primary" href="#works">実績を見る</a><a class="button secondary" href="#contact">相談する</a></div></div><figure class="hero-portrait"><img src="../public/assets/mizuno-rin-suit.png" alt="スーツ姿の水野凛"></figure></div></section>
+
+    <section class="intro"><div class="wrap intro-grid"><p class="section-label">APPROACH</p><div><h2>見た目を整え、<br>目的をかなえる。</h2><div class="intro-copy"><p>企業広報と病院勤務の経験を活かし、正確さとスピードを両立しながら制作を進めます。AIは目的ではなく、企画と表現を前へ進めるための実務ツールとして活用します。</p><ul class="services"><li>AIディレクション</li><li>デジタル広報</li><li>画像・動画編集</li><li>執筆</li><li>SNS運用・解析</li><li>業務システム構築</li></ul></div></div></div></section>
+
+    <section class="works" id="works"><div class="wrap"><div class="section-heading"><div><p class="section-label">SELECTED WORKS</p><h2>制作実績</h2></div><p>文字はすべてHTMLで表示し、作品画像は本来の解像度を保って掲載しています。</p></div>
+      <article class="work work-bags"><div class="work-copy"><p class="work-type">WORK 01 · PROMOTION</p><h3>カゴバッグの<br>販促ビジュアル</h3><p>朝食テーブル、空港ラウンジ、ホテル会食など、商品が使われる場面を設計。用途と世界観が一目で伝わるビジュアルへ展開しました。</p><div class="tag-row"><span class="tag">AIビジュアル制作</span><span class="tag">販促企画</span><span class="tag">シーン設計</span></div></div><div class="bag-grid"><img src="../public/assets/basket-breakfast.png" alt="ホテルの朝食テーブルに置かれたカゴバッグ"><img src="../public/assets/basket-airport.png" alt="空港ラウンジでカゴバッグを持つ女性"><img src="../public/assets/basket-hotel.png" alt="ホテルで黒いカゴバッグを持つ女性"><img src="../public/assets/basket-dinner.png" alt="会食で白いカゴバッグを持つ女性"></div></article>
+
+      <article class="work"><div class="work-visual story-visual"><span>企画</span><b>→</b><span>制作</span><b>→</b><span>運用</span><b>→</b><span>解析</span></div><div class="work-copy"><p class="work-type">WORK 02 · DIGITAL PR</p><h3>ストーリー作成・<br>SNS運用・解析</h3><p>ストーリー作成やSNS運用と解析で、デジタル広報の一端を担います。</p><div class="tag-row"><span class="tag">ストーリー設計</span><span class="tag">SNS運用</span><span class="tag">データ解析</span></div></div></article>
+
+      <article class="work"><div class="work-visual note-visual"><img src="../public/assets/ai-note-thumbnail.png" alt="AI自動化体験noteのサムネイル"></div><div class="work-copy"><p class="work-type">WORK 03 · EDITORIAL</p><h3>AI自動化体験note<br>サムネイル制作</h3><p>試行から見えた課題を整理し、読者が自分事として読みたくなる入口を設計しました。</p><div class="tag-row"><span class="tag">編集企画</span><span class="tag">サムネイル</span><span class="tag">執筆支援</span></div></div></article>
+
+      <article class="work"><div class="work-visual flyer-visual"><img src="../public/assets/well-support-flyer-redacted.png" alt="住所、メールアドレス、Webサイトを伏せたクライアント依頼の販促チラシ"></div><div class="work-copy"><p class="work-type">WORK 04 · CLIENT WORK</p><h3>クライアント依頼<br>販促チラシ制作</h3><p>商品写真、コピー、店舗案内を整理し、ショップの世界観と商品の魅力が一目で伝わる紙面へ仕上げました。掲載にあたり、住所・メールアドレス・Webサイトは伏せています。</p><div class="tag-row"><span class="tag">クライアントワーク</span><span class="tag">チラシデザイン</span><span class="tag">販促クリエイティブ</span></div></div></article>
+    </div></section>
+
+    <section class="contact" id="contact"><div class="wrap contact-grid"><div><p class="section-label">CONTACT</p><h2>制作のご相談を、<br>お聞かせください。</h2></div><div class="contact-copy"><p>AI活用、デジタル広報、画像・動画、執筆、SNS運用・解析についてご相談を承ります。</p><a class="mail" href="mailto:fukumaru10960@gmail.com"><span>fukumaru10960@gmail.com</span><span>↗</span></a></div></div></section>
   </main>
-  <a class="contact-link" href="mailto:fukumaru10960@gmail.com">お問い合わせ</a>
+  <footer>© MIZUNO RIN PROJECT · AI Direction & Digital PR</footer>
 </body>
 </html>
