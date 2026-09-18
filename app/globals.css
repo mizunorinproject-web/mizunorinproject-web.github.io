@@ -49,6 +49,7 @@ nav { display:flex; align-items:center; gap:28px; font-size:13px; }
 .basket-gallery { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:260px 260px; gap:14px; }
 .gallery-item { margin:0; overflow:hidden; border-radius:24px; }
 .gallery-item img { height:100%; object-fit:cover; transition:transform .55s ease; }
+.gallery-item:not(:first-child) img { object-position:center top; }
 .gallery-item:hover img { transform:scale(1.04); }
 .work-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:28px; }
 .work-card { overflow:hidden; border-radius:36px; background:#fff; color:var(--ink); }
